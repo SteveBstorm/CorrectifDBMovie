@@ -1,0 +1,7 @@
+<span *ngIf="currentUser.id == null" >
+    <button nbButton size="small" (click)="connect()">Se connecter</button>
+</span>
+<span *ngIf="currentUser.id != undefined ">
+    Bonjour {{currentUser.firstName}} &nbsp;
+    <button nbButton size="small" (click)="disconnect()">Se déconnecter</button>
+</span>

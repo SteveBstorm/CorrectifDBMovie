@@ -1,0 +1,15 @@
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+<nb-card>
+    <nb-card-header>
+        Connectez vous !
+    </nb-card-header>
+    <nb-card-body>
+        Adresse email : <input nbInput fieldSize="small" formControlName="email"><br />
+        Mot de passe : <input nbInput fieldSize="small" type="password" formControlName="password"><br />
+    </nb-card-body>
+    <nb-card-footer>
+        <button nbButton status="success" [disabled]="fg.invalid" outline shape="round" type="submit">Valider</button>&nbsp; 
+        <button nbButton status="danger" outline shape="round" (click)="close()">Annuler</button>
+    </nb-card-footer>
+</nb-card>
+</form>

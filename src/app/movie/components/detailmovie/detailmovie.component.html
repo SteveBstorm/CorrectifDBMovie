@@ -1,0 +1,18 @@
+<nb-card status="info">
+    <nb-card-header>
+        {{currentMovie.title}}
+    </nb-card-header>
+    <nb-card-body>
+        Realisateur : {{currentMovie.realisator?.firstName}} {{currentMovie.realisator?.lastName}} <br />
+        Scénariste : {{currentMovie.scenarist?.firstName}} {{currentMovie.scenarist?.lastName}}<br />
+        Année de sortie : {{currentMovie.releaseYear}}<br />
+        Description : {{currentMovie.description}}
+    </nb-card-body>
+    <nb-card-footer>
+        <ul>
+            <li *ngFor="let a of currentMovie.actors">
+                <strong>{{a.role}}</strong> ({{a.firstName}} {{a.lastName}})
+            </li>
+        </ul>
+    </nb-card-footer>
+</nb-card>

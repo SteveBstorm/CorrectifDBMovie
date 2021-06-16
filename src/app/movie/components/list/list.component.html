@@ -1,0 +1,12 @@
+<nb-card status="info">
+    <nb-card-header>
+        Liste de film
+    </nb-card-header>
+    <nb-card-body>
+        <ul>
+            <li *ngFor="let f of movieList">
+                <a [routerLink]="['../../movie/detail/'+f.id]">{{f.title}}</a>
+            </li>
+        </ul>
+    </nb-card-body>
+</nb-card>

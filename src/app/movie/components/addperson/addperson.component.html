@@ -1,0 +1,14 @@
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+    <nb-card>
+        <nb-card-header>
+            Ajouter une personne
+        </nb-card-header>
+        <nb-card-body>
+            <p>Prénom : <input nbInput formControlName="fn"></p>
+            <p>Nom : <input nbInput formControlName="ln"></p>
+        </nb-card-body>
+        <nb-card-footer>
+            <button nbButton status="success" outline [disabled]="fg.invalid">Valider</button>
+        </nb-card-footer>
+    </nb-card>
+</form>

@@ -1,0 +1,79 @@
+<form [formGroup]="fg" (ngSubmit)="submitForm()">
+    <nb-card>
+        <nb-card-header>
+            <h5>Nouveau film &nbsp; 
+                <button nbButton
+                        outline
+                        status="warning"
+                        size="tiny"
+                        (click)="newPerson()"
+                        type="button">Ajouter une personne</button>
+            </h5>
+        </nb-card-header>
+        <nb-card-body>
+            <nb-list>
+                <nb-list-item>
+                    <nb-layout-column>
+                        <nb-list>
+                            <nb-list-item>
+                                Titre
+                            </nb-list-item>
+                            <nb-list-item>
+                                Description
+                            </nb-list-item>
+                            <nb-list-item>
+                                Année de sortie
+                            </nb-list-item>
+                            <nb-list-item>
+                                Réalisateur
+                            </nb-list-item>
+                            <nb-list-item>
+                                Scénariste
+                            </nb-list-item>
+                        </nb-list>
+                    </nb-layout-column>
+                    <nb-layout-column style="border-left: black 1px solid;">
+                        <p><input nbInput formControlName="title"></p>
+                        <p><input nbInput formControlName="desc"></p>
+                        <p><input nbInput formControlName="releaseYear" type="number"></p>
+                        <p>
+                            <nb-select formControlName="realisator" placeholder="Faites votre choix">
+                                <nb-option *ngFor="let p of personList" [value]="p.id">
+                                    {{p.firstName}} {{p.lastName}}
+                                </nb-option>
+                            </nb-select>
+                        </p>
+                        <p>
+                            <nb-select formControlName="scenarist" placeholder="Faites votre choix">
+                                <nb-option *ngFor="let p of personList" [value]="p.id">
+                                    {{p.firstName}} {{p.lastName}}
+                                </nb-option>
+                            </nb-select>
+                        </p>
+                    </nb-layout-column>
+                    <nb-layout-column></nb-layout-column>
+                </nb-list-item>
+            </nb-list>
+            <nb-card accent="info">
+                <nb-card-header>
+                    Liste des acteurs <button type="button" nbButton shape="semi-round" status="primary" (click)="addActor()">Ajouter</button>
+                </nb-card-header>
+                <nb-card-body>
+                    <nb-list *ngIf="getActors().controls.length>0" formArrayName="actors">
+                        <nb-list-item *ngFor="let a of getActors().controls; let i = index" [formArrayName]="i">
+                            Role : <input type="text" nbInput formControlName="role">
+                            <nb-select formControlName="id" placeholder="Faites votre choix">
+                                <nb-option *ngFor="let p of personList" [value]="p.id">
+                                    {{p.firstName}} {{p.lastName}}
+                                </nb-option>
+                            </nb-select>
+                        </nb-list-item>
+                    </nb-list>
+                </nb-card-body>
+            </nb-card>
+        </nb-card-body>
+        <nb-card-footer>
+            <button nbButton type="submit" status="success" outline [disabled]="fg.invalid">Valider</button>
+        </nb-card-footer>
+    </nb-card>
+</form>
